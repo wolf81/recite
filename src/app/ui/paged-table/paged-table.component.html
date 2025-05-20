@@ -1,0 +1,86 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of columns" (click)="onSort(column)" style="cursor: pointer;">
+        {{ column.label }}
+        <span *ngIf="sortColumn === column">
+          <i class="ti" [ngClass]="sortDirection === 'asc' ? 'ti-chevron-up' : 'ti-chevron-down'" aria-hidden="true"></i>
+        </span>
+      </th>
+      <th *ngIf="actionsTemplate">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let _ of [].constructor(pageSize); let index = index"
+    [ngClass]="{
+      highlight: highlightedItems.has(pagedItems[index]),
+      hovered: hoveredItem === pagedItems[index],
+      'empty-row': !pagedItems[index]
+    }"
+    (mouseenter)="hoveredItem = pagedItems[index]"
+    (mouseleave)="hoveredItem = null"
+    (click)="onRowClick(pagedItems[index], index, $event)"
+    >
+    <ng-container *ngIf="pagedItems[index] as item; else emptyRow">
+      <td *ngFor="let column of columns">
+        <ng-container [ngSwitch]="getColumnValueType(column)">
+          <span *ngSwitchCase="'boolean'">
+            <i class="ti" [ngClass]="getColumnValue(item, column) ? 'ti-check' : 'ti-x'"></i>
+          </span>
+          <span *ngSwitchDefault>{{ getColumnValue(item, column) }}</span>
+        </ng-container>
+      </td>
+
+      <td *ngIf="actionsTemplate">
+        <ng-container *ngTemplateOutlet="actionsTemplate; context: { $implicit: item }"></ng-container>
+      </td>
+    </ng-container>
+
+    <ng-template #emptyRow>
+      <td *ngFor="let _ of columns">&nbsp;</td>  <!-- Empty cells if no data -->
+      <td *ngIf="actionsTemplate"></td> <!-- Empty cell for actions -->
+    </ng-template>
+  </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td [attr.colspan]="columns.length + (actionsTemplate ? 1 : 0)">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5em 0;">
+          <div class="button-group">
+            <button
+              *ngFor="let btn of buttons"
+              class="primary outline small no-border"
+              [attr.title]="btn.tooltip"
+              (click)="btn.action()">
+              <i class="{{ btn.icon }}" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div style="flex: 1; text-align: center;">
+            Page {{ page }} of {{ totalPages }}
+          </div>
+
+          <div class="button-group">
+            <button
+              class="primary outline small no-border"
+              (click)="prevPage()"
+              title="Previous Page"
+              [disabled]="page === 1"
+              aria-label="Previous">
+              <i class="ti ti-chevron-left" aria-hidden="true"></i>
+            </button>
+
+            <button
+              class="primary outline small no-border"
+              (click)="nextPage()"
+              title="Next Page"
+              [disabled]="page === totalPages"
+              aria-label="Next">
+              <i class="ti ti-chevron-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tfoot>
+</table>

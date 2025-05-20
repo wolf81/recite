@@ -1,0 +1,9 @@
+/* If due (green check) */
+.due {
+  color: #28a745;  /* Green */
+}
+
+/* If not due (red X) */
+.not-due {
+  color: #dc3545;  /* Red */
+}

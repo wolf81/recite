@@ -1,0 +1,74 @@
+/* Normalize font rendering between macOS and Windows */
+html {
+  font-size: 20px; /* Slightly smaller than default to reduce macOS "larger" appearance */
+  -webkit-font-smoothing: antialiased; /* Improve font rendering on macOS */
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6; /* Optional: tune for readability */
+}
+
+/* Optional: Adjust heading sizes to be a bit more uniform across platforms */
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.875rem; }
+
+button i {
+  font-size: 1em;   /* Matches button text size */
+  vertical-align: middle;
+}
+
+i.smaller {
+  font-size: 0.8em;
+}
+
+i.larger {
+  font-size: 1.2em;
+}
+
+button.small {
+  display: inline-flex;  /* Use flexbox for centering */
+  align-items: center;   /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  font-size: 1em; /* Smaller text */
+  padding: 8px 8px;  /* Reduced padding */
+  border-radius: 0px; /* Optional: make the corners smaller */
+  gap: 0px;  /* Optional: Add space between icon and text */
+}
+
+button.small.no-border {
+  padding: 4px, 2px; /* Keep this small */
+  line-height: 1;   /* Prevent line-height from expanding row height */
+  height: 24px;     /* Or use the same height as your table rows */
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+button.tiny {
+  display: inline-flex;  /* Use flexbox for centering */
+  align-items: center;   /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  font-size: 0.8em; /* Smaller text */
+  padding: 4px 4px;  /* Reduced padding */
+  border-radius: 0px; /* Optional: make the corners smaller */
+  gap: 0px;  /* Optional: Add space between icon and text */
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.no-border:focus-visible {
+  border: 2px solid var(--primary); /* Restore outline behavior */
+}

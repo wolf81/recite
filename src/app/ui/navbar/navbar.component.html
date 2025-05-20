@@ -1,0 +1,27 @@
+<div class="navbar-grid">
+  <nav class="nav-left">
+    <ul class="nav-links">
+      <li><a routerLink="/training" routerLinkActive="active">Training</a></li>
+      <li><a routerLink="/decks" routerLinkActive="active">Decks</a></li>
+    </ul>
+  </nav>
+
+  <div class="nav-title">
+    {{ appName }}
+  </div>
+
+  <nav class="nav-right">
+    <ul>
+      <li><a routerLink="/scheduler" routerLinkActive="active">Scheduler</a></li>
+      <li>
+        <button (click)="toggleTheme()" tabindex="0" class="primary outline small no-border">
+          @if (isDarkTheme()) {
+            <i class="ti ti-moon larger"></i>
+          } @else {
+            <i class="ti ti-sun larger"></i>
+          }
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

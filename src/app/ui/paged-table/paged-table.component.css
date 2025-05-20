@@ -1,0 +1,68 @@
+/* Align last column cells (Actions) */
+:host ::ng-deep .table td:last-child {
+  table-layout: auto;
+  text-align: right;
+  width: 100%;
+}
+
+:host ::ng-deep .table th:last-child {
+  text-align: right;
+}
+
+:host ::ng-deep .table th:last-child,
+:host ::ng-deep .table td:last-child {
+  white-space: nowrap;
+  width: 1%;
+}
+
+tr td:first-child,
+tr td:last-child {
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+}
+
+tr.hovered:not(.empty-row) td {
+  background-color: var(--pico-muted-border-color);
+  cursor: pointer;
+}
+
+tr.hovered:not(.empty-row) td:first-child {
+  border-left: 2px solid var(--pico-primary);
+}
+
+tr.hovered:not(.empty-row) td:last-child {
+  border-right: 2px solid var(--pico-primary);
+}
+
+/* Animation for programmatic highlight (e.g., flash) */
+tr.highlight {
+  animation: row-highlight 1.0s ease-in-out;
+}
+
+tr.highlight td {
+  background-color: var(--pico-background);
+  color: var(--pico-foreground);
+}
+
+@keyframes row-highlight {
+  0% {
+    background-color: var(--pico-background);
+    color: var(--pico-foreground);
+  }
+  50% {
+    background-color: var(--pico-primary);
+    color: var(--pico-primary-inverse);
+  }
+  100% {
+    background-color: var(--pico-background);
+    color: var(--pico-foreground);
+  }
+}
+
+.ti-check {
+  color: var(--pico-secondary);
+}
+
+.ti-x {
+  color: var(--pico-muted-color);
+}

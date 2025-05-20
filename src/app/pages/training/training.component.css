@@ -1,0 +1,12 @@
+.card {
+  min-height: 40vh;
+  padding: 2rem;
+  border: 1px solid var(--muted-border-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  vertical-align: center;
+  perspective: 1000px; /* This makes the flip look better */
+}
