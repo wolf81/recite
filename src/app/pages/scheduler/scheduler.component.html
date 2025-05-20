@@ -1,0 +1,10 @@
+<app-page-layout
+  title="Scheduler">
+
+  <app-paged-table
+    [items]="flashcards.slice().reverse()"
+    [pageSize]="10"
+    [columns]="columns"
+    [buttons]="actionButtons">
+  </app-paged-table>
+</app-page-layout>

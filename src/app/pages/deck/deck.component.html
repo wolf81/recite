@@ -1,0 +1,21 @@
+<app-page-layout
+  [title]="deck.name">
+
+  <app-paged-table
+    [items]="flashcards.slice().reverse()"
+    [pageSize]="10"
+    [actionsTemplate]="actions"
+    [columns]="[
+      { label: 'Front', mapper: 'front' },
+      { label: 'Back', mapper: 'back' }
+    ]"
+    [buttons]="actionButtons"
+    placeholder="No flashcards available. Create a flashcard to get started!">
+  </app-paged-table>
+
+  <ng-template #actions let-item>
+    <button class="secondary outline small no-border" (click)="editFlashcard(item)"><i class="ti ti-edit"></i></button>
+    <button class="secondary outline small no-border" (click)="removeFlashcard(item.id)"><i class="ti ti-trash"></i></button>
+  </ng-template>
+
+</app-page-layout>

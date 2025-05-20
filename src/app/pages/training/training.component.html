@@ -1,0 +1,34 @@
+<app-page-layout
+  title="Training">
+
+  <section *ngIf="!trainingComplete && currentCard; else empty">
+    <article class="card">
+      <h2 class="front">{{ currentCard.front }}</h2>
+
+      <h3 *ngIf="showBack">{{ currentCard.back }}</h3>
+      <div *ngIf="!showBack">
+        <p>
+          <button tabindex="-1" (click)="revealBack()" [hidden]="showBack">Show Answer (Space)</button>
+        </p>
+      </div>
+
+      <footer class="grid">
+        <button tabindex="-1" (click)="gradeCard('again')" class="secondary">❌ Again (1)</button>
+        <button tabindex="-1" (click)="gradeCard('hard')" class="secondary">😓 Hard (2)</button>
+        <button tabindex="-1" (click)="gradeCard('good')">🙂 Good (3)</button>
+        <button tabindex="-1" (click)="gradeCard('easy')" class="contrast">😎 Easy (4)</button>
+      </footer>
+    </article>
+  </section>
+</app-page-layout>
+
+<ng-template #empty>
+  <article class="card">
+    <p *ngIf="allFlashcards.length === 0">
+      No flashcards available. Add some in the Flashcards tab.
+    </p>
+    <p *ngIf="allFlashcards.length > 0 && trainingComplete">
+      🎉 Training complete! Come back later.
+    </p>
+  </article>
+</ng-template>

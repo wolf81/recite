@@ -1,0 +1,22 @@
+table, tr, td {
+  border: none;
+}
+
+table {
+  border-bottom-color: transparent;
+  margin-bottom: 0;
+}
+
+tr {
+  height: 4em;
+}
+
+td {
+  background-color: transparent;
+  padding: 0rem;
+  margin: 0rem;
+}
+
+input {
+  margin: 0rem;
+}

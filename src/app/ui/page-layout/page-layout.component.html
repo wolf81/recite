@@ -1,0 +1,24 @@
+<nav class="breadcrumb-nav">
+  <ng-container *ngFor="let crumb of crumbs; let last = last">
+    <ng-container *ngIf="!last">
+      <a [routerLink]="crumb.route" class="breadcrumb-link">{{ crumb.label }}</a>
+      <span class="breadcrumb-separator">»</span>
+    </ng-container>
+    <ng-container *ngIf="last">
+      <span class="breadcrumb-current">{{ crumb.label }}</span>
+    </ng-container>
+  </ng-container>
+</nav>
+
+<div class="title-bar">
+  <h2>{{ title }}</h2>
+  <div class="button-group">
+    <button *ngFor="let btn of buttons" (click)="btn.action()" class="secondary outline small" [title]="btn.tooltip">
+      <i [class]="btn.icon" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+
+<div class="page-content">
+  <ng-content></ng-content>
+</div>

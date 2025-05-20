@@ -1,0 +1,26 @@
+footer {
+  all: unset; /* Remove all inherited Pico styles */
+  display: block;
+  width: 100%;
+}
+
+footer .actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-bottom: 0rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.actions button {
+  min-width: 6rem;
+}
+
+dialog.modal > article {
+  border: 2px solid var(--pico-muted-border-color);
+  border-radius: 8px;
+}

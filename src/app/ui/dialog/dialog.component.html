@@ -1,0 +1,16 @@
+<dialog open class="modal" role="dialog" aria-modal="true">
+  <article>
+    <header *ngIf="title">
+      <h3>{{ title }}</h3>
+    </header>
+
+    <ng-container #content></ng-container>
+
+    <footer>
+      <div class="actions">
+        <button class="secondary" (click)="onCancel()">{{ cancelText }}</button>
+        <button (click)="onSubmit()">{{ okText }}</button>
+      </div>
+    </footer>
+  </article>
+</dialog>
