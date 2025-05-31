@@ -3,16 +3,20 @@ $ErrorActionPreference = "Stop"
 
 # Define variables
 $projectName = "recite"
-$distDir = "dist\$projectName\browser"
-$customDomain = "$projectName.wolftrail.net"
+$domain = "$projectName.wolftrail.net"
+
+# Construct the distribution directory path using Join-Path
+$distDir = Join-Path "dist" $projectName
+$distDir = Join-Path $distDir "browser"
 
 Write-Host "🔨 Building Angular project for production..."
-ng build --configuration production --base-href "/" --no-silent
+ng build --configuration production --base-href "/"
 
-Write-Host "📝 Writing CNAME file for custom domain..."
-Set-Content -Path "$distDir\CNAME" -Value $customDomain
+Write-Host "📝 Writing CNAME file for domain..."
+$cnamePath = Join-Path $distDir "CNAME"
+Set-Content -Path $cnamePath -Value $domain
 
 Write-Host "🚀 Deploying to GitHub Pages..."
 npx angular-cli-ghpages --dir=$distDir
 
-Write-Host "✅ Deployment complete. Visit https://$customDomain"
+Write-Host "✅ Deployment complete. Visit https://$domain"
