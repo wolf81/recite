@@ -6,6 +6,9 @@ on:
       - master
   workflow_dispatch: # 👈 Support manual triggering
 
+permissions:
+  contents: write  # ✅ important for pushing to gh-pages
+
 jobs:
   deploy:
     name: Run deploy.ps1 on merge to master
@@ -29,5 +32,3 @@ jobs:
       - name: ▶️ Run deploy script
         shell: pwsh
         run: ./deploy.ps1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
