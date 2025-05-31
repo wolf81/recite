@@ -17,6 +17,6 @@ $cnamePath = Join-Path $distDir "CNAME"
 Set-Content -Path $cnamePath -Value $domain
 
 Write-Host "🚀 Deploying to GitHub Pages..."
-npx angular-cli-ghpages --dir=$distDir
+npx angular-cli-ghpages --dir=$distDir --no-silent
 
 Write-Host "✅ Deployment complete. Visit https://$domain"
