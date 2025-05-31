@@ -7,7 +7,7 @@ $distDir = "dist\$projectName\browser"
 $customDomain = "$projectName.wolftrail.net"
 
 Write-Host "🔨 Building Angular project for production..."
-ng build --configuration production --base-href "/"
+ng build --configuration production --base-href "/" --no-silent
 
 Write-Host "📝 Writing CNAME file for custom domain..."
 Set-Content -Path "$distDir\CNAME" -Value $customDomain
