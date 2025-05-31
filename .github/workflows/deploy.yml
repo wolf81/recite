@@ -29,3 +29,5 @@ jobs:
       - name: ▶️ Run deploy script
         shell: pwsh
         run: ./deploy.ps1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
