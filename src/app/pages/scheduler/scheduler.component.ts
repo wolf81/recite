@@ -31,7 +31,7 @@ export class SchedulerComponent implements OnInit {
   columns: PagedTableColumn<Flashcard>[] = [
     { label: 'Front', mapper: 'front' },
     { label: 'Back', mapper: 'back' },
-    { label: 'Interval', mapper: 'interval' },
+    { label: 'Interval', mapper: card => card.interval.toPrecision(2) },
     { label: 'Repetitions', mapper: 'repetitions' },
     { label: 'Ease Factor', mapper: card => card.easeFactor.toFixed(2) },
     { label: 'Last Review', mapper: card => card.lastReviewDate ? new Date(card.lastReviewDate).toLocaleDateString() : '' },
