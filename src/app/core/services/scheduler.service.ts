@@ -14,7 +14,7 @@ export class SchedulerService {
 
     switch (grade) {
       case 'again':
-        card.interval = 1;
+        card.interval = 0.05;
         card.repetitions = 0;
         card.easeFactor = 2.5;
         break;
@@ -40,7 +40,7 @@ export class SchedulerService {
 
     return flashcards.filter(card => {
       const nextReview = new Date(card.lastReviewDate);
-      nextReview.setDate(nextReview.getDate() + card.interval);
+      nextReview.setHours(nextReview.getDate() + card.interval * 24);
       return enabledDeckIds.includes(card.deckId) && nextReview <= today;
     });
   }
