@@ -10,13 +10,12 @@
     [actionsTemplate]="actions"
     [columns]="columns"
     [buttons]="actionButtons"
-    (rowClicked)="showDeck($event)">
+    (rowClicked)="showDeck($event)"
+    placeholder="No decks available. Create a deck to get started!">
   </app-paged-table>
-
-  <ng-template #actions let-item>
-    <button class="secondary outline small no-border" (click)="editDeck(item)"><i class="ti ti-edit"></i></button>
-    <button class="secondary outline small no-border" (click)="deleteDeck(item.id)"><i class="ti ti-trash"></i></button>
-  </ng-template>
-
-  <div *ngIf="decks.length === 0">No decks available. Create a deck to get started!</div>
 </app-page-layout>
+
+<ng-template #actions let-item>
+  <button class="secondary outline small no-border" (click)="editDeck(item)"><i class="ti ti-edit"></i></button>
+  <button class="secondary outline small no-border" (click)="deleteDeck(item.id)"><i class="ti ti-trash"></i></button>
+</ng-template>

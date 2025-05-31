@@ -15,6 +15,39 @@
   width: 1%;
 }
 
+.table-container {
+  position: relative;
+}
+
+.table-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.table-footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 0;
+}
+
+.page-info-centered {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap;
+}
+
 tr td:first-child,
 tr td:last-child {
   border-left: 2px solid transparent;

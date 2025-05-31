@@ -23,6 +23,7 @@ export class PagedTableComponent<T> {
     this.detectColumnValueTypes();
   }
 
+  @Input() placeholder = 'No items to display';
   @Input() pageSize = 10;
   @Input() actionsTemplate!: TemplateRef<any>;
   @Input() buttons: ToolbarButton[] = [];
@@ -64,8 +65,14 @@ export class PagedTableComponent<T> {
 
   onRowClick(item: T, index: number, event?: MouseEvent) {
     const target = event?.target as HTMLElement;
-    if (target?.closest('button, a, input, textarea, [data-ignore-row-click]')) return;
-    this.rowClicked.emit(item);
+
+    if (target?.closest('button, a, input, textarea, [data-ignore-row-click]')) {
+      return;
+    }
+
+    if (item) {
+      this.rowClicked.emit(item);
+    }
   }
 
   // ─── Paging ───────────────────────────────────────────────────────────────────

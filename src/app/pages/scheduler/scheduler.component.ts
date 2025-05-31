@@ -38,10 +38,7 @@ export class SchedulerComponent implements OnInit {
     { label: 'Is Due?', mapper: card => this.isDue(card) }
   ]
 
-  constructor(private deckService: DeckService, private flashcardService: FlashcardService) {
-    const decks = deckService.getAll();
-    this.activeDeckIds = decks.filter(deck => deck.enabled).map(deck => deck.id);
-  }
+  constructor(private deckService: DeckService, private flashcardService: FlashcardService) {}
 
   ngOnInit(): void {
     this.loadFlashcards();
@@ -70,6 +67,8 @@ export class SchedulerComponent implements OnInit {
   }
 
   private loadFlashcards() {
+    const decks = this.deckService.getAll();
+    this.activeDeckIds = decks.filter(deck => deck.enabled).map(deck => deck.id);
     this.flashcards = this.flashcardService.getAll();
   }
 }

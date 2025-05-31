@@ -20,15 +20,15 @@
       </footer>
     </article>
   </section>
-
-  <ng-template #empty>
-    <article class="card">
-      <p *ngIf="allFlashcards.length === 0">
-        No flashcards available. Add some in the Flashcards tab.
-      </p>
-      <p *ngIf="allFlashcards.length > 0 && trainingComplete">
-        🎉 Training complete! Come back later.
-      </p>
-    </article>
-  </ng-template>
 </app-page-layout>
+
+<ng-template #empty>
+  <article class="card">
+    <p *ngIf="allFlashcards.length === 0">
+      No flashcards available. Add some in the Flashcards tab.
+    </p>
+    <p *ngIf="allFlashcards.length > 0 && trainingComplete">
+      🎉 Training complete! Come back later.
+    </p>
+  </article>
+</ng-template>
