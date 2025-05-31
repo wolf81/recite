@@ -102,6 +102,9 @@ export class DecksComponent implements OnInit {
       `Are you sure you want to delete deck '${deck.name}'?`,
       'Delete').then(result => {
       if (result) {
+        for (const flashcard of this.flashcardService.getByDeck(deckId)) {
+          this.flashcardService.remove(flashcard.id);
+        }
         this.deckService.remove(deckId);
         this.loadDecks();
       }
