@@ -1,8 +1,0 @@
-{
-  "routes": {
-    "/recite": {},
-    "/recite/decks": {},
-    "/recite/scheduler": {},
-    "/recite/training": {}
-  }
-}
